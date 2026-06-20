@@ -2,17 +2,31 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;//player
-    private Vector3 offSet;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform target;              // the ball
+    public float followDistance = 5f;    // how far behind
+    public float height = 2f;            // camera height above the ball
+    public float smoothing = 10f;         // higher = snappier
+
+    private Rigidbody rigid;
     void Start()
     {
-        offSet = transform.position - target.position;
+        rigid = target.GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = new Vector3(target.position.x + offSet.x, target.position.y + offSet.y, target.position.z + offSet.z );
+        if (rigid == null) return;
+
+        Vector3 v = rigid.linearVelocity;
+
+        Vector3 backDir;
+        if (v.sqrMagnitude > 0.01f)
+            backDir = -v.normalized;   // behind where it’s moving
+        else
+            backDir = -target.forward; // fallback
+
+        Vector3 desiredPos = target.position + backDir * followDistance + Vector3.up * height;
+
+        transform.position = Vector3.Lerp(transform.position, desiredPos, smoothing * Time.deltaTime);
+        transform.LookAt(target.position);
     }
 }
