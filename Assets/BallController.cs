@@ -4,7 +4,9 @@ using System.Collections;
 public class BallController : MonoBehaviour
 {
     public float speed;
+    public float topSpeed = 350f;
     public float turnSpeed =180f;
+    public float accelerationSpeed;
     private Rigidbody rigid;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,10 +29,18 @@ public class BallController : MonoBehaviour
             rigid.MoveRotation(rigid.rotation * Quaternion.Euler(0f, yaw, 0f));
         }
 
-        // move forward and back in the facing direction
+        // move forward 
         Vector3 forward = transform.forward;
-        Vector3 force = forward * (w * speed - rigid.linearVelocity.magnitude * 0f);
+        float targetSpeed = w * topSpeed; // topSpeed is max in either direction
+        float currentSpeed = Vector3.Dot(rigid.linearVelocity, forward); // speed along facing direction
 
-        rigid.AddForce(force, ForceMode.Acceleration);
+        // Accelerate
+        float accel = (Mathf.Abs(w) > 0.01f) ? accelerationSpeed : 0f;
+
+        float newSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accel * Time.fixedDeltaTime);
+
+        // Apply force to reach the newSpeed going forward
+        Vector3 velChange = forward * (newSpeed - currentSpeed);
+        rigid.AddForce(velChange, ForceMode.VelocityChange);
     }
 }
