@@ -39,7 +39,7 @@ public class ObstaclePush : MonoBehaviour
             //points = points +(hit.impulse * pointsPerImpulse)
             rigid.AddForceAtPosition(forceDirection * forceMagnetude, transform.position, ForceMode.Impulse);
             float gained = impulse * pointsPerImpulse;
-            points += gained;
+            points += gained * 100;//multiply to change decimal position
 
             Debug.Log($"Impulse: {impulse}, +Points: {gained}, Total: {points}");
             
