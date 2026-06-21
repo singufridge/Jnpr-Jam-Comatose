@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 54943358}
   - component: {fileID: 54943364}
   m_Layer: 0
-  m_Name: Ball
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   topSpeed: 350
   turnSpeed: 180
   accelerationSpeed: 20
+  points: 0
+  totalPoints: 0
 --- !u!54 &54943359
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -291,6 +293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObstaclePush
   forceMagnetude: 1
+  points: 0
+  interactableLayer: 6
+  ballController: {fileID: 54943358}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +919,7 @@ GameObject:
   - component: {fileID: 1206340367}
   - component: {fileID: 1206340366}
   - component: {fileID: 1206340365}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1036,7 +1041,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.03, y: 4.31, z: -3.98}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.7352, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1071,6 +1076,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 54943363}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1337371759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1337371760}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1337371760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337371759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.25797, y: 0.5, z: 5.18283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1411474114
 GameObject:
@@ -1225,7 +1261,7 @@ GameObject:
   - component: {fileID: 1839661025}
   - component: {fileID: 1839661024}
   - component: {fileID: 1839661023}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1365,3 +1401,4 @@ SceneRoots:
   - {fileID: 54943363}
   - {fileID: 1839661027}
   - {fileID: 1206340369}
+  - {fileID: 1337371760}

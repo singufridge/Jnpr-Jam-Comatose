@@ -7,6 +7,11 @@ public class BallController : MonoBehaviour
     public float topSpeed = 350f;
     public float turnSpeed =180f;
     public float accelerationSpeed;
+    public float newSpeed;
+
+    //points
+    public float points;
+    public float totalPoints;
     private Rigidbody rigid;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,10 +42,16 @@ public class BallController : MonoBehaviour
         // Accelerate
         float accel = (Mathf.Abs(w) > 0.01f) ? accelerationSpeed : 0f;
 
-        float newSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accel * Time.fixedDeltaTime);
+        newSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, accel * Time.fixedDeltaTime);
 
         // Apply force to reach the newSpeed going forward
         Vector3 velChange = forward * (newSpeed - currentSpeed);
         rigid.AddForce(velChange, ForceMode.VelocityChange);
     }
+
+    /*public void PointsCalc()
+    {
+        points = points + newSpeed;
+        Debug.Log(points);
+    }*/
 }
