@@ -12,6 +12,14 @@ public class GameManager : MonoBehaviour
     public int SquishyHP = 1;
     public int BrittleHP = 1;
 
+    //Object types
+    public enum ObjectType
+    {
+        Solid,
+        Squishy,
+        Brittle
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -1,21 +1,17 @@
 using UnityEngine;
 
-public class ObjectHealth : MonoBehaviour
+public class OnObjectCollision : MonoBehaviour
 {
-    public enum ObjectType
-    {
-        Solid,
-        Squishy,
-        Brittle
-    }
-
-    [SerializeField] private ObjectType objectType;
-
     GameManager gameManager;
     BallController playerPhysics;
 
+    [SerializeField] private GameManager.ObjectType objectType;
+
     private int maxHP;
     private int currentHP;
+
+    [SerializeField] private AudioClip onPlayerHitSFX; //sound when player hits
+    [SerializeField] private AudioClip collisionSFX; //sound on any collision
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -25,17 +21,19 @@ public class ObjectHealth : MonoBehaviour
         playerPhysics = GameObject.FindWithTag("Player").GetComponent<BallController>();
 
         //change max HP depending on object type, take values from the game manager
-        if (objectType == ObjectType.Solid)
+        switch (objectType)
         {
-            maxHP = gameManager.SolidHP;
-        }
-        else if (objectType == ObjectType.Squishy)
-        {
-            maxHP = gameManager.SquishyHP;
-        }
-        else if (objectType == ObjectType.Brittle)
-        {
-            maxHP = gameManager.BrittleHP;
+            case GameManager.ObjectType.Solid:
+                maxHP = gameManager.SolidHP;
+                break;
+
+            case GameManager.ObjectType.Squishy:
+                maxHP = gameManager.SquishyHP;
+                break;
+
+            case GameManager.ObjectType.Brittle:
+                maxHP = gameManager.BrittleHP;
+                break;
         }
 
         //set HP to max by default
@@ -57,12 +55,21 @@ public class ObjectHealth : MonoBehaviour
         //if obj hit by player, calculate dmg from velocity
         if (hit.gameObject.name == "Player")
         {
+            //calculate dmg
             int damage = Mathf.RoundToInt(playerPhysics.currentSpeed);
-
             if (damage > 0) { currentHP -= damage; }
 
-            Debug.Log($"Hit for: {damage}");
-            Debug.Log($"HP Now: {currentHP}");
+            //play sound effect
+            if (damage > 4 && onPlayerHitSFX != null)
+            {
+                SoundFXManager.instance.PlaySFXClip(onPlayerHitSFX, transform, 0.2f);
+            }
+
+            Debug.Log($"{damage} damage, HP now {currentHP}");
+        }
+        else if (collisionSFX != null)
+        {
+            SoundFXManager.instance.PlaySFXClip(collisionSFX, transform, 0.5f);
         }
     }
 }

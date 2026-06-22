@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 8696179941033047341}
   - component: {fileID: 6679030300621443778}
   - component: {fileID: 6953501637223105114}
-  - component: {fileID: 1034680022181704308}
   - component: {fileID: 1464689398861744893}
   m_Layer: 6
-  m_Name: Test Cube
+  m_Name: Test Cube (Brittle Object)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: c9c72328fb6fe9e408d1927fb191b3ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,19 +141,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1034680022181704308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8401712709550888119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9c97579ff6ae614c938eebd0b11cbe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BreakingSound
-  onBreakSFX: {fileID: 8300000, guid: a35aae4e740ca724b96c64d88893f714, type: 3}
 --- !u!114 &1464689398861744893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82cfd38525e2d664c99b014ed6897eb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  gameManager: {fileID: 0}
-  player: {fileID: 0}
-  objectType: 0
+  objectType: 2
+  onPlayerHitSFX: {fileID: 8300000, guid: 24aa7f0fdf974ee43b3b63b3a922d629, type: 3}
+  collisionSFX: {fileID: 8300000, guid: 24aa7f0fdf974ee43b3b63b3a922d629, type: 3}
