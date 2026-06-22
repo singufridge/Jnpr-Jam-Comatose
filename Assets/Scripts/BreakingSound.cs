@@ -1,8 +1,12 @@
+using System.Globalization;
 using UnityEngine;
 
 public class BreakingSound : MonoBehaviour
 {
-    public AudioSource audioSource;
+    [SerializeField] private AudioClip onBreakSFX;
+
+    //public int isObjBroken = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,11 +21,6 @@ public class BreakingSound : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
-        BreakSound();
-    }
-
-    public void BreakSound()
-    {
-        audioSource.Play();
+        SoundFXManager.instance.PlaySFXClip(onBreakSFX, transform, 0.5f);
     }
 }
