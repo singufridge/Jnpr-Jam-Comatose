@@ -1,9 +1,16 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int objectsBroken;
-    
+    [Header("Player Score")]
+    public int objectsBrokenScore;
+
+    [Header("Object Types Max HP")]
+    public int SolidHP = 1;
+    public int SquishyHP = 1;
+    public int BrittleHP = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

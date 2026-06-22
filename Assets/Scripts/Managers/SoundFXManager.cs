@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundFXManager : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class SoundFXManager : MonoBehaviour
     public static SoundFXManager instance;
 
     [SerializeField] private AudioSource soundFXObject;
+
+    //set mixer groups
+    public AudioMixerGroup soundFXGroup;
+    public AudioMixerGroup musicGroup;
 
     private void Awake()
     {
@@ -23,19 +28,13 @@ public class SoundFXManager : MonoBehaviour
         //spawn in gameObject and save instance as audioSource
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 
-        //assign audioClip
         audioSource.clip = audioClip;
-
-        //assign volume
         audioSource.volume = volume;
+        audioSource.outputAudioMixerGroup = soundFXGroup;
 
-        //play sound
         audioSource.Play();
 
-        //get length of SFX clip
         float clipLength = audioSource.clip.length;
-
-        //destroy clip after it's done playing
         Destroy(audioSource.gameObject, clipLength);
     }
 
@@ -45,22 +44,15 @@ public class SoundFXManager : MonoBehaviour
         //assign a random index
         int rand = Random.Range(0, audioClip.Length);
         
-        //spawn in gameObject and save instance as audioSource
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 
         //assign audioClip @ random int index
         audioSource.clip = audioClip[rand];
-
-        //assign volume
         audioSource.volume = volume;
 
-        //play sound
         audioSource.Play();
 
-        //get length of SFX clip
         float clipLength = audioSource.clip.length;
-
-        //destroy clip after it's done playing
         Destroy(audioSource.gameObject, clipLength);
     }
 }
