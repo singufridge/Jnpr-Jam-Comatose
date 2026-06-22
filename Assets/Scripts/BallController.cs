@@ -8,6 +8,7 @@ public class BallController : MonoBehaviour
     public float turnSpeed =180f;
     public float accelerationSpeed;
     public float newSpeed;
+    public float currentSpeed;
 
     //points
     public float points;
@@ -37,7 +38,7 @@ public class BallController : MonoBehaviour
         // move forward 
         Vector3 forward = transform.forward;
         float targetSpeed = w * topSpeed; // topSpeed is max in either direction
-        float currentSpeed = Vector3.Dot(rigid.linearVelocity, forward); // speed along facing direction
+        currentSpeed = Vector3.Dot(rigid.linearVelocity, forward); // speed along facing direction
 
         // Accelerate
         float accel = (Mathf.Abs(w) > 0.01f) ? accelerationSpeed : 0f;
