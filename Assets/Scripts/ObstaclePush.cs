@@ -6,8 +6,12 @@ public class ObstaclePush : MonoBehaviour
     private float forceMagnetude;
     public float pointsPerImpulse = 0.1f;
     public float points =0f;
+
     public int interactableLayer;
     public BallController ballController;
+
+    public float impulse;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +23,7 @@ public class ObstaclePush : MonoBehaviour
     {
         
     }
+
     private void OnCollisionEnter(Collision hit)
     {
         if (hit.gameObject.layer != interactableLayer)
@@ -28,10 +33,9 @@ public class ObstaclePush : MonoBehaviour
         // impulse is how hard the collision is
         //magnetude is a part of impulse and mesures how big the push was
         //if a hit is stronger then hit.impulse gets larger
-        float impulse = hit.impulse.magnitude;
-        
+        impulse = hit.impulse.magnitude;
 
-        if(rigid !=null)
+        if (rigid != null)
         {
             Vector3 forceDirection = hit.gameObject.transform.position = transform.position;
             forceDirection.y = 0;
