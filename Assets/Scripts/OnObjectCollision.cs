@@ -25,14 +25,20 @@ public class OnObjectCollision : MonoBehaviour
         {
             case GameManager.ObjectType.Solid:
                 maxHP = gameManager.SolidHP;
+                onPlayerHitSFX = gameManager.onPlayerHitSolidSFX;
+                collisionSFX = gameManager.collisionSolidSFX;
                 break;
 
             case GameManager.ObjectType.Squishy:
                 maxHP = gameManager.SquishyHP;
+                onPlayerHitSFX = gameManager.onPlayerHitBrittleSFX;
+                collisionSFX = gameManager.collisionBrittleSFX;
                 break;
 
             case GameManager.ObjectType.Brittle:
                 maxHP = gameManager.BrittleHP;
+                onPlayerHitSFX = gameManager.onPlayerHitSquishySFX;
+                collisionSFX = gameManager.collisionSquishySFX;
                 break;
         }
 
