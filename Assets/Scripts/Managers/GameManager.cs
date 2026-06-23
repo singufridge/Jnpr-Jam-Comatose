@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public AudioClip onPlayerHitSquishySFX;
     public AudioClip collisionSquishySFX;
 
-
     //Object types
     public enum ObjectType
     {
