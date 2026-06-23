@@ -139,3 +139,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 143535
+  packageName: Ultimate Low Poly Dungeon
+  packageVersion: 2.0
+  assetPath: Assets/BrokenVector/LowPolyDungeon/Models/Clutter/Beaker_Full_Var2.fbx
+  uploadId: 481753
