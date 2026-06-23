@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 8166842030398348068}
   - component: {fileID: 6328453478543205816}
   - component: {fileID: 8984676796525648379}
-  - component: {fileID: 4679735543741556205}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Chair Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,22 +136,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4679735543741556205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4201740447904467442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82cfd38525e2d664c99b014ed6897eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  objectType: 0
-  onPlayerHitSFX: {fileID: 8300000, guid: a35aae4e740ca724b96c64d88893f714, type: 3}
-  collisionSFX: {fileID: 8300000, guid: 23a1fa704797241429e19a5a8ff287ce, type: 3}
