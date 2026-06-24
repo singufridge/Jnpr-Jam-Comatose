@@ -929,15 +929,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: HAM-O-METER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ad34cab075a34754a8bf8ca3997161d5, type: 2}
-  m_sharedMaterial: {fileID: 7316177926375345251, guid: ad34cab075a34754a8bf8ca3997161d5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc44e8f2ba2671f4aaebc37be10be90d, type: 2}
+  m_sharedMaterial: {fileID: 7316177926375345251, guid: fc44e8f2ba2671f4aaebc37be10be90d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283593455
-  m_fontColor: {r: 0.93725497, g: 0.44705886, b: 0.32156864, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

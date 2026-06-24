@@ -6,13 +6,21 @@ public class OnObjectCollision : MonoBehaviour
     UIManager uiManager;
     BallController playerPhysics;
 
+    [Space(10)]
+    [Header("Object Type")]
     [SerializeField] private GameManager.ObjectType objectType;
 
     private int maxHP;
     private int currentHP;
 
+    [Space(10)]
     [SerializeField] private AudioClip onPlayerHitSFX; //sound when player hits
     [SerializeField] private AudioClip collisionSFX; //sound on any collision
+
+    [Space(10)]
+    [Header("Destroy Effect Material")]
+    private Renderer rend;
+    private Material objectMat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -21,6 +29,9 @@ public class OnObjectCollision : MonoBehaviour
         gameManager = FindFirstObjectByType<GameManager>();
         uiManager = FindFirstObjectByType<UIManager>();
         playerPhysics = GameObject.FindWithTag("Player").GetComponent<BallController>();
+
+        rend = GetComponent<Renderer>();
+        objectMat = rend.material;
 
         //change max HP depending on object type, take values from the game manager
         switch (objectType)
@@ -51,11 +62,7 @@ public class OnObjectCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //on object death
-        if (currentHP <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        
     }
     private void OnCollisionEnter(Collision hit)
     {
@@ -72,9 +79,15 @@ public class OnObjectCollision : MonoBehaviour
                 SoundFXManager.instance.PlaySFXClip(onPlayerHitSFX, transform, 0.2f);
             }
 
+            //update player score
             uiManager.UpdateScore(damage);
 
-            //Debug.Log($"{damage} damage, HP now {currentHP}");
+            //on object death
+            if (currentHP <= 0)
+            {
+                gameManager.DestroyEffect(objectMat);
+                Destroy(gameObject);
+            }
         }
         else if (collisionSFX != null)
         {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject player;
+
     [Header("Object Types Max HP")]
     public int SolidHP = 1;
     public int SquishyHP = 1;
@@ -16,6 +18,9 @@ public class GameManager : MonoBehaviour
     public AudioClip collisionBrittleSFX;
     public AudioClip onPlayerHitSquishySFX;
     public AudioClip collisionSquishySFX;
+
+    [Header("Destry Object Effect")]
+    public ParticleSystem destroyEffect;
 
     //Object types
     public enum ObjectType
@@ -35,5 +40,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    //particle effect generator
+    public void DestroyEffect(Material mat)
+    {
+        ParticleSystem newParticles = Instantiate(destroyEffect, player.transform);
+        ParticleSystemRenderer effectRend = newParticles.GetComponent<ParticleSystemRenderer>();
+
+        effectRend.material = mat;
+        newParticles.Play();
+
+        Debug.Log(player.transform.position);
     }
 }

@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33052937b61112347baaf11226d9d61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  objectsBrokenScore: 0
   SolidHP: 18
   SquishyHP: 12
   BrittleHP: 6
@@ -54,3 +53,4 @@ MonoBehaviour:
   collisionBrittleSFX: {fileID: 0}
   onPlayerHitSquishySFX: {fileID: 0}
   collisionSquishySFX: {fileID: 0}
+  destroyEffect: {fileID: 8720347647682369885, guid: e97d98b4d0d4341479da4c81ec99f43d, type: 3}
