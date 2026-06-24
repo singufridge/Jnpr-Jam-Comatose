@@ -5,12 +5,15 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     //scripts
-    public Rigidbody target;
+    public Rigidbody playerPhysics;
     public GameManager gameManager;
+
+    [Header("Player Score")]
+    public int objectsDamageScore;
 
     [Space(10)]
     [Header("Ham-o-meter")]
-    [SerializeField] private float maxSpeed = 0.0f; // The maximum speed of the target ** IN KM/H **
+    [SerializeField] private float maxSpeed = 0.0f;
     [SerializeField] private float minSpeedAngle;
     [SerializeField] private float maxSpeedAngle;
     private float speed = 0.0f;
@@ -20,12 +23,12 @@ public class UIManager : MonoBehaviour
 
     [Space(10)]
     [Header("Score")]
-    //public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText;
 
     [Space(10)]
     [Header("Pause Menu")]
     public GameObject pauseMenu;
-    public bool isPaused;
+    private bool isPaused;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,7 +48,7 @@ public class UIManager : MonoBehaviour
         }
 
         //Hamometer
-        speed = target.linearVelocity.magnitude * 3.6f;
+        speed = playerPhysics.linearVelocity.magnitude * 3.6f;
         if (meterPaw != null)
         {
             meterPaw.localEulerAngles =
@@ -74,5 +77,12 @@ public class UIManager : MonoBehaviour
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public void UpdateScore(int damage)
+    {
+        objectsDamageScore += damage;
+        scoreText.text = objectsDamageScore.ToString();
+        //to add: animation trigger
     }
 }

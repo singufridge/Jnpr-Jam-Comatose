@@ -124,6 +124,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3743644628874560072, guid: dac85aab0150279499d87d6611428ac5, type: 3}
   m_PrefabInstance: {fileID: 506342556746890317}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &108401681 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4186598956601500575, guid: dac85aab0150279499d87d6611428ac5, type: 3}
+  m_PrefabInstance: {fileID: 506342556746890317}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &144894423
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +650,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6f85b423af5b384fb9307144bedb04f, type: 2}
+  - {fileID: 2100000, guid: 6437c5fb1d99afd4785b86886f84e34b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1196,7 +1207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a6f85b423af5b384fb9307144bedb04f, type: 2}
+  - {fileID: 2100000, guid: 6437c5fb1d99afd4785b86886f84e34b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1990,14 +2001,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc0879260b2f8747b26e944dbed92cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
-  target: {fileID: 8204768247280186738}
+  playerPhysics: {fileID: 8204768247280186738}
   gameManager: {fileID: 219671403}
+  objectsDamageScore: 0
   maxSpeed: 70
   minSpeedAngle: 60
   maxSpeedAngle: -60
   meterPaw: {fileID: 745540126}
+  scoreText: {fileID: 108401681}
   pauseMenu: {fileID: 7168613}
-  isPaused: 0
 --- !u!4 &5726145480447440789
 Transform:
   m_ObjectHideFlags: 0

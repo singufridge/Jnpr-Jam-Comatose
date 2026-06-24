@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player Score")]
-    public int objectsDamageScore;
-
     [Header("Object Types Max HP")]
     public int SolidHP = 1;
     public int SquishyHP = 1;

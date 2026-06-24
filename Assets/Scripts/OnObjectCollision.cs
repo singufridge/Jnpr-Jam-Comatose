@@ -3,6 +3,7 @@ using UnityEngine;
 public class OnObjectCollision : MonoBehaviour
 {
     GameManager gameManager;
+    UIManager uiManager;
     BallController playerPhysics;
 
     [SerializeField] private GameManager.ObjectType objectType;
@@ -18,6 +19,7 @@ public class OnObjectCollision : MonoBehaviour
     {
         //assign refrences
         gameManager = FindFirstObjectByType<GameManager>();
+        uiManager = FindFirstObjectByType<UIManager>();
         playerPhysics = GameObject.FindWithTag("Player").GetComponent<BallController>();
 
         //change max HP depending on object type, take values from the game manager
@@ -70,7 +72,7 @@ public class OnObjectCollision : MonoBehaviour
                 SoundFXManager.instance.PlaySFXClip(onPlayerHitSFX, transform, 0.2f);
             }
 
-            gameManager.objectsDamageScore += damage;
+            uiManager.UpdateScore(damage);
 
             //Debug.Log($"{damage} damage, HP now {currentHP}");
         }
