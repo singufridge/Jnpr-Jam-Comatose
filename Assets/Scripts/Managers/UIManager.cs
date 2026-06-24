@@ -5,22 +5,26 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     //scripts
-    public BallController ballController;
+    public Rigidbody target;
     public GameManager gameManager;
 
     [Space(10)]
+    [Header("Ham-o-meter")]
+    [SerializeField] private float maxSpeed = 0.0f; // The maximum speed of the target ** IN KM/H **
+    [SerializeField] private float minSpeedAngle;
+    [SerializeField] private float maxSpeedAngle;
+    private float speed = 0.0f;
 
-    //physics
-    [SerializeField] private TextMeshProUGUI speedText;
-    [SerializeField] private TextMeshProUGUI velocityText;
-
-    //score
-    [SerializeField] private TextMeshProUGUI scoreText;
-
-    //pause menu
-    [SerializeField] private GameObject pauseMenu;
+    [Space(5)]
+    public RectTransform meterPaw;
 
     [Space(10)]
+    [Header("Score")]
+    //public TextMeshProUGUI scoreText;
+
+    [Space(10)]
+    [Header("Pause Menu")]
+    public GameObject pauseMenu;
     public bool isPaused;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,19 +37,20 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateText();
-
+        //Pause menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused) { Pause(); }
             else if (isPaused) { Resume(); }
         }
-    }
 
-    public void UpdateText()
-    {
-        speedText.text = ballController.currentSpeed.ToString();
-        scoreText.text = gameManager.objectsDamageScore.ToString();
+        //Hamometer
+        speed = target.linearVelocity.magnitude * 3.6f;
+        if (meterPaw != null)
+        {
+            meterPaw.localEulerAngles =
+                new Vector3(0, 0, Mathf.Lerp(minSpeedAngle, maxSpeedAngle, speed / maxSpeed));
+        }
     }
 
     public void Pause()
