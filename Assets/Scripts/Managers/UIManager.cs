@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     public void UpdateText()
     {
         speedText.text = ballController.currentSpeed.ToString();
-        scoreText.text = gameManager.objectsBrokenScore.ToString();
+        scoreText.text = gameManager.objectsDamageScore.ToString();
     }
 
     public void Pause()

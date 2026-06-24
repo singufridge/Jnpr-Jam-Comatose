@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Player Score")]
-    public int objectsBrokenScore;
+    public int objectsDamageScore;
 
     [Header("Object Types Max HP")]
     public int SolidHP = 1;

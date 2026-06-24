@@ -31,7 +31,6 @@ public class OnObjectCollision : MonoBehaviour
 
             case GameManager.ObjectType.Squishy:
                 maxHP = gameManager.SquishyHP;
-                
                 onPlayerHitSFX = gameManager.onPlayerHitSquishySFX;
                 collisionSFX = gameManager.collisionSquishySFX;
                 break;
@@ -53,7 +52,6 @@ public class OnObjectCollision : MonoBehaviour
         //on object death
         if (currentHP <= 0)
         {
-            gameManager.objectsBrokenScore += 1;
             Destroy(this.gameObject);
         }
     }
@@ -72,7 +70,9 @@ public class OnObjectCollision : MonoBehaviour
                 SoundFXManager.instance.PlaySFXClip(onPlayerHitSFX, transform, 0.2f);
             }
 
-            Debug.Log($"{damage} damage, HP now {currentHP}");
+            gameManager.objectsDamageScore += damage;
+
+            //Debug.Log($"{damage} damage, HP now {currentHP}");
         }
         else if (collisionSFX != null)
         {
