@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   objectsBrokenScore: 0
-  SolidHP: 15
-  SquishyHP: 1
+  SolidHP: 18
+  SquishyHP: 12
   BrittleHP: 6
   onPlayerHitSolidSFX: {fileID: 0}
   collisionSolidSFX: {fileID: 0}
