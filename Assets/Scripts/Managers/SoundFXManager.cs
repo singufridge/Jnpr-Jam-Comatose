@@ -39,10 +39,10 @@ public class SoundFXManager : MonoBehaviour
     }
 
     //use to play a random sound effect from an array
-    public void PlayRandomSFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    public void PlayRandomSFXClip(List<AudioClip> audioClip, Transform spawnTransform, float volume)
     {
         //assign a random index
-        int rand = Random.Range(0, audioClip.Length);
+        int rand = Random.Range(0, audioClip.Count);
         
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 

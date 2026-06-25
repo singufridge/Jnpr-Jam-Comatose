@@ -14,13 +14,18 @@ public class GameManager : MonoBehaviour
     [Header("Object Types Sounds")]
     [Header("Solid")]
     public AudioClip playerSolidSFX;
-    public AudioClip collSolidSFX;
+    public AudioClip collSolidSFX1;
+    public AudioClip collSolidSFX2;
+
     [Header("Squishy")]
     public AudioClip playerSquishySFX;
-    public AudioClip collSquishySFX;
+    public AudioClip collSquishySFX1;
+    public AudioClip collSquishySFX2;
+
     [Header("Brittle")]
     public AudioClip playerBrittleSFX;
-    public AudioClip collBrittleSFX;
+    public AudioClip collBrittleSFX1;
+    public AudioClip collBrittleSFX2;
 
     [Header("Particle Effects")]
     public ParticleSystem destroyEffect;

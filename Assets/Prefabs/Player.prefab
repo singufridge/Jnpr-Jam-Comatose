@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1298559346415950141}
   - component: {fileID: 591863586173172707}
   - component: {fileID: 48914770046410144}
+  - component: {fileID: 648626923919473184}
   m_Layer: 0
   m_Name: PlayerBallVisualMesh
   m_TagString: Untagged
@@ -112,6 +113,20 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &648626923919473184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486556951581535233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d98d46ad862f377449612dfcf3756ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallVisualMesh
+  playerObject: {fileID: 7300211961092894771}
+  ballRadius: 0.5
 --- !u!1 &3262208049345055560
 GameObject:
   m_ObjectHideFlags: 0

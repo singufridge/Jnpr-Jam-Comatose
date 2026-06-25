@@ -45,15 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   player: {fileID: 0}
-  SolidHP: 18
-  SquishyHP: 12
-  BrittleHP: 6
-  playerSolidSFX: {fileID: 0}
-  collSolidSFX: {fileID: 0}
-  playerSquishySFX: {fileID: 0}
-  collSquishySFX: {fileID: 0}
-  playerBrittleSFX: {fileID: 0}
-  collBrittleSFX: {fileID: 0}
+  SolidHP: 30
+  SquishyHP: 26
+  BrittleHP: 10
+  playerSolidSFX: {fileID: 8300000, guid: 013682b8f61930b46b9cc715a6110d75, type: 3}
+  collSolidSFX1: {fileID: 8300000, guid: 12ed24ea1aa92ef4196816347ae95f27, type: 3}
+  collSolidSFX2: {fileID: 8300000, guid: a0c1f734ef71f98499018d755dfb995d, type: 3}
+  playerSquishySFX: {fileID: 8300000, guid: e65ea05d01c796e4f928982caa550110, type: 3}
+  collSquishySFX1: {fileID: 8300000, guid: 55fe507db535bc24a8a13c68f3a4c813, type: 3}
+  collSquishySFX2: {fileID: 8300000, guid: 633e8366c869b6a43b943876afbed3a2, type: 3}
+  playerBrittleSFX: {fileID: 8300000, guid: 115a3335f4fcacc44a5d999e4e6826f9, type: 3}
+  collBrittleSFX1: {fileID: 8300000, guid: 5aba9c7e9ea5a48459a453d7dc9f9f27, type: 3}
+  collBrittleSFX2: {fileID: 8300000, guid: 4d1641a151a373642a5978dbfeca9401, type: 3}
   destroyEffect: {fileID: 8720347647682369885, guid: e97d98b4d0d4341479da4c81ec99f43d, type: 3}
   onomatCrash: {fileID: 2317717194362922578, guid: 32f27cf6bf7c74b47886be97c5064d51, type: 3}
   onomatThud: {fileID: 7814595094595363620, guid: 4ee3ac9830b832c49b80c96169a3e23b, type: 3}

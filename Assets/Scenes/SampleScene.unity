@@ -1899,18 +1899,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 613411175}
-    - target: {fileID: 8028779486289379732, guid: 764eb9c9daa75c74bbbbd934ec90daa1, type: 3}
-      propertyPath: SolidHP
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028779486289379732, guid: 764eb9c9daa75c74bbbbd934ec90daa1, type: 3}
-      propertyPath: BrittleHP
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8028779486289379732, guid: 764eb9c9daa75c74bbbbd934ec90daa1, type: 3}
-      propertyPath: SquishyHP
-      value: 18
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

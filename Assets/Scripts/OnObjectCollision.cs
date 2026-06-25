@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OnObjectCollision : MonoBehaviour
@@ -10,7 +12,7 @@ public class OnObjectCollision : MonoBehaviour
     private int currentHP;
 
     private AudioClip playerSFX; //sound when player hits
-    private AudioClip collSFX; //sound on any collision
+    private List<AudioClip> collSFX = new List<AudioClip>(); //sound on any collision
 
     private ParticleSystem onomatPlayer; //onomatopoeia on player hit
     private ParticleSystem onomatColl; //onomat on any collision
@@ -43,7 +45,8 @@ public class OnObjectCollision : MonoBehaviour
 
                 //sfx
                 playerSFX = gameManager.playerSolidSFX;
-                collSFX = gameManager.collSolidSFX;
+                collSFX.Add(gameManager.collSolidSFX1);
+                collSFX.Add(gameManager.collSolidSFX2);
 
                 //onomat effect
                 onomatPlayer = gameManager.onomatBam;
@@ -55,7 +58,8 @@ public class OnObjectCollision : MonoBehaviour
 
                 //sfx
                 playerSFX = gameManager.playerSquishySFX;
-                collSFX = gameManager.collSquishySFX;
+                collSFX.Add(gameManager.collSquishySFX1);
+                collSFX.Add(gameManager.collSquishySFX2);
 
                 //onomat
                 onomatPlayer = gameManager.onomatSquish;
@@ -67,7 +71,8 @@ public class OnObjectCollision : MonoBehaviour
 
                 //sfx
                 playerSFX = gameManager.playerBrittleSFX;
-                collSFX = gameManager.collBrittleSFX;
+                collSFX.Add(gameManager.collBrittleSFX1);
+                collSFX.Add(gameManager.collBrittleSFX2);
 
                 //onomat
                 onomatPlayer = gameManager.onomatCrash;
@@ -91,16 +96,18 @@ public class OnObjectCollision : MonoBehaviour
             currentHP -= damage;
 
             //IF IMPACT IS HARD ENOUGH
-            //play sound effect
-            if (damage > 4 && playerSFX != null)
+            if (damage > 6)
             {
-                SoundFXManager.instance.PlaySFXClip(playerSFX, transform, 0.2f);
-            }
+                //play player sfx
+                if (playerSFX != null) { SoundFXManager.instance.PlaySFXClip(playerSFX, transform, 0.2f); }
 
-            //play onomat effect
-            if (damage > 4)
-            {
+                //player vfx
                 gameManager.OnomatEffect(onomatPlayer);
+            }
+            else
+            {
+                //random SFX
+                SoundFXManager.instance.PlayRandomSFXClip(collSFX, transform, 1f);
             }
 
             //update player score
@@ -115,8 +122,10 @@ public class OnObjectCollision : MonoBehaviour
         }
         else
         {
-            if (collSFX != null) { SoundFXManager.instance.PlaySFXClip(collSFX, transform, 0.5f); }
+            //random SFX
+            SoundFXManager.instance.PlayRandomSFXClip(collSFX, transform, 1f);
 
+            //onomat thump effect
             ParticleSystem newOnomat = Instantiate(onomatColl, transform);
             newOnomat.Play();
         }
