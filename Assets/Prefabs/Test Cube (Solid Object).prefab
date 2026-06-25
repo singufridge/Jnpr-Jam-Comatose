@@ -134,3 +134,4 @@ MonoBehaviour:
   objectType: 0
   onPlayerHitSFX: {fileID: 8300000, guid: a35aae4e740ca724b96c64d88893f714, type: 3}
   collisionSFX: {fileID: 8300000, guid: 23a1fa704797241429e19a5a8ff287ce, type: 3}
+  particleMat: {fileID: 2100000, guid: c8a5bbcc9bbd5e5438307505fb43f846, type: 2}

@@ -20,7 +20,7 @@ public class OnObjectCollision : MonoBehaviour
     [Space(10)]
     [Header("Destroy Effect Material")]
     private Renderer rend;
-    private Material objectMat;
+    [SerializeField] private Material particleMat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -31,7 +31,7 @@ public class OnObjectCollision : MonoBehaviour
         playerPhysics = GameObject.FindWithTag("Player").GetComponent<BallController>();
 
         rend = GetComponent<Renderer>();
-        objectMat = rend.material;
+        if (particleMat == null) { particleMat = rend.material; } //if no material added in inpector, automatically set to object mat
 
         //change max HP depending on object type, take values from the game manager
         switch (objectType)
@@ -64,6 +64,7 @@ public class OnObjectCollision : MonoBehaviour
     {
         
     }
+
     private void OnCollisionEnter(Collision hit)
     {
         //if obj hit by player, calculate dmg from velocity
@@ -71,7 +72,9 @@ public class OnObjectCollision : MonoBehaviour
         {
             //calculate dmg
             int damage = Mathf.RoundToInt(playerPhysics.currentSpeed);
-            if (damage > 0) { currentHP -= damage; }
+            if (damage < 0) { damage *= -1; } //convert neg to pos
+
+            currentHP -= damage;
 
             //play sound effect
             if (damage > 4 && onPlayerHitSFX != null)
@@ -85,7 +88,7 @@ public class OnObjectCollision : MonoBehaviour
             //on object death
             if (currentHP <= 0)
             {
-                gameManager.DestroyEffect(objectMat);
+                gameManager.DestroyEffect(particleMat);
                 Destroy(gameObject);
             }
         }

@@ -50,7 +50,5 @@ public class GameManager : MonoBehaviour
 
         effectRend.material = mat;
         newParticles.Play();
-
-        Debug.Log(player.transform.position);
     }
 }
