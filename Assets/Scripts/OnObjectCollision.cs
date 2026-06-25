@@ -6,23 +6,24 @@ public class OnObjectCollision : MonoBehaviour
     UIManager uiManager;
     BallController playerPhysics;
 
-    [Space(10)]
-    [Header("Object Type")]
-    [SerializeField] private GameManager.ObjectType objectType;
-
     private int maxHP;
     private int currentHP;
 
+    private AudioClip playerSFX; //sound when player hits
+    private AudioClip collSFX; //sound on any collision
+
+    private ParticleSystem onomatPlayer; //onomatopoeia on player hit
+    private ParticleSystem onomatColl; //onomat on any collision
+
     [Space(10)]
-    [SerializeField] private AudioClip onPlayerHitSFX; //sound when player hits
-    [SerializeField] private AudioClip collisionSFX; //sound on any collision
+    [Header("Object Type")]
+    [SerializeField] private GameManager.ObjectType objectType;
 
     [Space(10)]
     [Header("Destroy Effect Material")]
     private Renderer rend;
     [SerializeField] private Material particleMat;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         //assign refrences
@@ -37,49 +38,69 @@ public class OnObjectCollision : MonoBehaviour
         switch (objectType)
         {
             case GameManager.ObjectType.Solid:
+                //hp
                 maxHP = gameManager.SolidHP;
-                onPlayerHitSFX = gameManager.onPlayerHitSolidSFX;
-                collisionSFX = gameManager.collisionSolidSFX;
+
+                //sfx
+                playerSFX = gameManager.playerSolidSFX;
+                collSFX = gameManager.collSolidSFX;
+
+                //onomat effect
+                onomatPlayer = gameManager.onomatBam;
                 break;
 
             case GameManager.ObjectType.Squishy:
+                //hp
                 maxHP = gameManager.SquishyHP;
-                onPlayerHitSFX = gameManager.onPlayerHitSquishySFX;
-                collisionSFX = gameManager.collisionSquishySFX;
+
+                //sfx
+                playerSFX = gameManager.playerSquishySFX;
+                collSFX = gameManager.collSquishySFX;
+
+                //onomat
+                onomatPlayer = gameManager.onomatSquish;
                 break;
 
             case GameManager.ObjectType.Brittle:
+                //hp
                 maxHP = gameManager.BrittleHP;
-                onPlayerHitSFX = gameManager.onPlayerHitBrittleSFX;
-                collisionSFX = gameManager.collisionBrittleSFX;
+
+                //sfx
+                playerSFX = gameManager.playerBrittleSFX;
+                collSFX = gameManager.collBrittleSFX;
+
+                //onomat
+                onomatPlayer = gameManager.onomatCrash;
                 break;
         }
 
+        onomatColl = gameManager.onomatThud;
+
         //set HP to max by default
         currentHP = maxHP;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnCollisionEnter(Collision hit)
     {
         //if obj hit by player, calculate dmg from velocity
         if (hit.gameObject.name == "Player")
-        {
+        {            
             //calculate dmg
             int damage = Mathf.RoundToInt(playerPhysics.currentSpeed);
             if (damage < 0) { damage *= -1; } //convert neg to pos
-
             currentHP -= damage;
 
+            //IF IMPACT IS HARD ENOUGH
             //play sound effect
-            if (damage > 4 && onPlayerHitSFX != null)
+            if (damage > 4 && playerSFX != null)
             {
-                SoundFXManager.instance.PlaySFXClip(onPlayerHitSFX, transform, 0.2f);
+                SoundFXManager.instance.PlaySFXClip(playerSFX, transform, 0.2f);
+            }
+
+            //play onomat effect
+            if (damage > 4)
+            {
+                gameManager.OnomatEffect(onomatPlayer);
             }
 
             //update player score
@@ -92,9 +113,12 @@ public class OnObjectCollision : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        else if (collisionSFX != null)
+        else
         {
-            SoundFXManager.instance.PlaySFXClip(collisionSFX, transform, 0.5f);
+            if (collSFX != null) { SoundFXManager.instance.PlaySFXClip(collSFX, transform, 0.5f); }
+
+            ParticleSystem newOnomat = Instantiate(onomatColl, transform);
+            newOnomat.Play();
         }
     }
 }

@@ -44,13 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33052937b61112347baaf11226d9d61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  player: {fileID: 0}
   SolidHP: 18
   SquishyHP: 12
   BrittleHP: 6
-  onPlayerHitSolidSFX: {fileID: 0}
-  collisionSolidSFX: {fileID: 0}
-  onPlayerHitBrittleSFX: {fileID: 0}
-  collisionBrittleSFX: {fileID: 0}
-  onPlayerHitSquishySFX: {fileID: 0}
-  collisionSquishySFX: {fileID: 0}
+  playerSolidSFX: {fileID: 0}
+  collSolidSFX: {fileID: 0}
+  playerSquishySFX: {fileID: 0}
+  collSquishySFX: {fileID: 0}
+  playerBrittleSFX: {fileID: 0}
+  collBrittleSFX: {fileID: 0}
   destroyEffect: {fileID: 8720347647682369885, guid: e97d98b4d0d4341479da4c81ec99f43d, type: 3}
+  onomatCrash: {fileID: 2317717194362922578, guid: 32f27cf6bf7c74b47886be97c5064d51, type: 3}
+  onomatThud: {fileID: 7814595094595363620, guid: 4ee3ac9830b832c49b80c96169a3e23b, type: 3}
+  onomatSquish: {fileID: 8723948576841922054, guid: 3dec663403eb52a44bc80fe6db786117, type: 3}
+  onomatBam: {fileID: 7259865084411130018, guid: 8d302531a5d3a614881e38a64bb1114b, type: 3}

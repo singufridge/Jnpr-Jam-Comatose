@@ -12,15 +12,23 @@ public class GameManager : MonoBehaviour
     public int BrittleHP = 1;
 
     [Header("Object Types Sounds")]
-    public AudioClip onPlayerHitSolidSFX;
-    public AudioClip collisionSolidSFX;
-    public AudioClip onPlayerHitBrittleSFX;
-    public AudioClip collisionBrittleSFX;
-    public AudioClip onPlayerHitSquishySFX;
-    public AudioClip collisionSquishySFX;
+    [Header("Solid")]
+    public AudioClip playerSolidSFX;
+    public AudioClip collSolidSFX;
+    [Header("Squishy")]
+    public AudioClip playerSquishySFX;
+    public AudioClip collSquishySFX;
+    [Header("Brittle")]
+    public AudioClip playerBrittleSFX;
+    public AudioClip collBrittleSFX;
 
-    [Header("Destry Object Effect")]
+    [Header("Particle Effects")]
     public ParticleSystem destroyEffect;
+    [Space(5)]
+    public ParticleSystem onomatCrash;
+    public ParticleSystem onomatThud;
+    public ParticleSystem onomatSquish;
+    public ParticleSystem onomatBam;
 
     //Object types
     public enum ObjectType
@@ -49,6 +57,12 @@ public class GameManager : MonoBehaviour
         ParticleSystemRenderer effectRend = newParticles.GetComponent<ParticleSystemRenderer>();
 
         effectRend.material = mat;
+        newParticles.Play();
+    }
+
+    public void OnomatEffect(ParticleSystem onomatSys)
+    {
+        ParticleSystem newParticles = Instantiate(onomatSys, player.transform);
         newParticles.Play();
     }
 }
