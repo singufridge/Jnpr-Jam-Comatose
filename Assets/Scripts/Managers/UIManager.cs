@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     //scripts
     public Rigidbody playerPhysics;
     public GameManager gameManager;
+    public TimerManager timerManager;
 
     [Header("Player Score")]
     public int objectsDamageScore;
@@ -30,11 +31,22 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     private bool isPaused;
 
+    [Space(10)]
+    [Header("EndGame Menu")]
+    public GameObject endMenu;
+    private bool gameEnded;
+
+    [Space(10)]
+    [Header("Timer")]
+    public TextMeshProUGUI timeText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         isPaused = false;
+        gameEnded = false;
         pauseMenu.SetActive(false);
+        endMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,6 +66,12 @@ public class UIManager : MonoBehaviour
             meterPaw.localEulerAngles =
                 new Vector3(0, 0, Mathf.Lerp(minSpeedAngle, maxSpeedAngle, speed / maxSpeed));
         }
+        if(timerManager.timeRemaining > 0)
+        {
+            timerManager.CalcTime(timerManager.timeRemaining);
+            timeText.text = string.Format("{0:00}:{1:00}", timerManager.minutes, timerManager.seconds);
+        }
+        
     }
 
     public void Pause()
@@ -84,5 +102,12 @@ public class UIManager : MonoBehaviour
         objectsDamageScore += damage;
         scoreText.text = objectsDamageScore.ToString();
         //to add: animation trigger
+    }
+
+    public void EndGame()
+    {
+        endMenu.SetActive(true);
+        Time.timeScale = 1f;
+        gameEnded = true;
     }
 }
