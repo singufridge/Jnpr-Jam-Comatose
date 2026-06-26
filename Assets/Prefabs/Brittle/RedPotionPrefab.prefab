@@ -134,8 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   objectType: 2
-  onPlayerHitSFX: {fileID: 8300000, guid: 24aa7f0fdf974ee43b3b63b3a922d629, type: 3}
-  collisionSFX: {fileID: 8300000, guid: 24aa7f0fdf974ee43b3b63b3a922d629, type: 3}
+  particleMat: {fileID: 2100000, guid: c9c72328fb6fe9e408d1927fb191b3ce, type: 2}
 --- !u!64 &5390920216569444513
 MeshCollider:
   m_ObjectHideFlags: 0
