@@ -14,6 +14,8 @@ public class BallController : MonoBehaviour
     public float points;
     public float totalPoints;
     private Rigidbody rigid;
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,6 +51,8 @@ public class BallController : MonoBehaviour
         Vector3 velChange = forward * (newSpeed - currentSpeed);
         rigid.AddForce(velChange, ForceMode.VelocityChange);
     }
+
+    
 
     /*public void PointsCalc()
     {

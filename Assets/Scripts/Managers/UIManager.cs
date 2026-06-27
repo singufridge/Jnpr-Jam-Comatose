@@ -107,7 +107,7 @@ public class UIManager : MonoBehaviour
     public void EndGame()
     {
         endMenu.SetActive(true);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         gameEnded = true;
     }
 }

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +36,10 @@ public class GameManager : MonoBehaviour
     public ParticleSystem onomatSquish;
     public ParticleSystem onomatBam;
 
+    public List<GameObject> objectList;
+    public UIManager uIManager;
+
+
     //Object types
     public enum ObjectType
     {
@@ -46,13 +51,16 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (objectList.Count == 0)
+        {
+            uIManager.EndGame();
+        }
     }
 
     //particle effect generator

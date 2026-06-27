@@ -116,6 +116,7 @@ public class OnObjectCollision : MonoBehaviour
             //on object death
             if (currentHP <= 0)
             {
+                gameManager.objectList.Remove(gameObject);
                 gameManager.DestroyEffect(particleMat);
                 Destroy(gameObject);
             }
