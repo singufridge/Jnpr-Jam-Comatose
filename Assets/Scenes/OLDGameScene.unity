@@ -2692,7 +2692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5705112853316578810, guid: 63c6db2c026a81144bb092b4c7d4052b, type: 3}
       propertyPath: m_Name
-      value: CrystalBallPrefab (3)
+      value: SackPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 7008550705533573608, guid: 63c6db2c026a81144bb092b4c7d4052b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
