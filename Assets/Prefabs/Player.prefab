@@ -405,6 +405,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5267881080157516248, guid: adde817b8d3922d4f8ca7bc7afbac639, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: df766337368008e408a17fce4b82c8eb, type: 2}
     - target: {fileID: -1201745842728487906, guid: adde817b8d3922d4f8ca7bc7afbac639, type: 3}
       propertyPath: m_Name
       value: Hamster
